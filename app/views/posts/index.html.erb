@@ -1,2 +1,9 @@
 <h1>一覧表示</h1>
-<p>テストテスト</p>
+
+<p><%= link_to "新規作成", new_post_path %></p>
+
+<ul>
+	<% @posts.each do |p| %>
+		<li><%= p.title %></li>
+	<% end %>
+</ul>
