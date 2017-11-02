@@ -2,7 +2,13 @@
 
 <%= form_for :post, url: posts_path do |f|  %>
 	<p><%= f.text_field :title %></p>
+	<% if @post.errors.messages[:title].any? %>
+		<%= @post.errors.messages[:title][0] %>
+	<% end %>
 	<p><%= f.text_area :content %></p>
+	<% if @post.errors.messages[:content].any? %>
+		<%= @post.errors.messages[:content][0] %>
+	<% end %>
 	<p><%= f.submit  %></p>
 <% end %>
 
