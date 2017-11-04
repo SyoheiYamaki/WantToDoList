@@ -5,7 +5,11 @@
 <ul>
 	<% @posts.each do |p| %>
 		<li>
-			<%= link_to p. title, post_path(p.id) %>
+			<%= link_to post_path(p.id) do %>
+				<%= p.title %>
+				(<%=  p.comments.size %>)
+			<% end %>
+			
 			<%= link_to "編集", edit_post_path(p.id)  %>
 		</li>
 	<% end %>

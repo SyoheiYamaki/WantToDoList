@@ -4,3 +4,25 @@
 <p><%= @post.content %></p>
 
 <p><%= link_to "戻る", posts_path %></p>
+
+<% if @post.comments.any? %>
+	<ul>
+		<% @post.comments.each do |c| %>
+			<li>
+				<%= c.body %>
+				<%= link_to "削除" , post_comment_path(@post.id, c), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
+
+
+<h3>--コメント--</h3>
+<%= form_for ([@post, @post.comments.build]) do |f|  %>
+<p>
+	<%= f.text_field :body %>
+	
+</p>
+
+<p><%= f.submit %></p>
+<% end %>
