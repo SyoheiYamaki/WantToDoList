@@ -1,7 +1,10 @@
+
 <h1>一覧表示</h1>
 
 <p><%= link_to "新規作成", new_post_path %></p>
 
+<div class="row">
+<div class="col-sm-8">
 <ul>
 	<% @posts.each do |p| %>
 		<li>
@@ -14,3 +17,9 @@
 		</li>
 	<% end %>
 </ul>
+</div>
+<div class="col-sm-4" >
+</div>
+
+</div>
+

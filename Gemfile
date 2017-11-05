@@ -7,6 +7,8 @@ end
 
 ruby '2.3.5'
 
+gem 'bootstrap-sass','3.2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use mysql as the database for Active Record
