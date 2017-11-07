@@ -1,15 +1,28 @@
 <h2>新規作成</h2>
 
 <%= form_for :post, url: posts_path do |f|  %>
-	<p><%= f.text_field :title %></p>
+
+	<p><%= f.text_field :title ,placeholder: "タイトル"%></p>
 	<% if @post.errors.messages[:title].any? %>
 		<%= @post.errors.messages[:title][0] %>
 	<% end %>
-	<p><%= f.text_area :content %></p>
+
+	<p><%= f.text_area :content, placeholder:"行いたい内容、理由などを記載してください。" %></p>
 	<% if @post.errors.messages[:content].any? %>
 		<%= @post.errors.messages[:content][0] %>
 	<% end %>
+
+
+	<p>
+		投稿者：
+		<%= f.radio_button :owner ,"やましょ" %>やましょ
+		<%= f.radio_button :owner ,"だーひろ" %>だーひろ
+		<%= f.radio_button :owner ,"えってぃ" %>えってぃ
+	</p>
+
+
 	<p><%= f.submit  %></p>
+
 <% end %>
 
 

@@ -4,22 +4,53 @@
 <p><%= link_to "新規作成", new_post_path %></p>
 
 <div class="row">
-<div class="col-sm-8">
-<ul>
-	<% @posts.each do |p| %>
-		<li>
-			<%= link_to post_path(p.id) do %>
-				<%= p.title %>
-				(<%=  p.comments.size %>)
+	<!-- 候補一覧 -->
+	<div class="col-sm-8">
+		<ul>
+			<% @posts.each do |p| %>
+				<% if p.schedule.nil? %>
+					<li>
+						<%= link_to post_path(p.id) do %>
+							<%= p.title %>
+							(<%=  p.comments.size %>)
+						<% end %>
+						-<%= p.owner %>-
+						<br>
+						<% if p.content.length > 20 %>
+							<%= p.content.slice(0...20) %>
+						<%= link_to "...続きを読む", post_path(p.id) %>
+						<% else %>
+							<%= p.content %>
+						<% end %>
+					</li>
+				<% end %>
 			<% end %>
-			
-			<%= link_to "編集", edit_post_path(p.id)  %>
-		</li>
-	<% end %>
-</ul>
-</div>
-<div class="col-sm-4" >
-</div>
+		</ul>
+	</div>
+
+	<!-- 日程確定したやつ -->
+	<div class="col-sm-4" >
+		<ul>
+			<% @posts.each do |p| %>
+				<% if p.schedule.present? %>
+					<li>
+						<%= link_to post_path(p.id) do %>
+							<%= p.title %>
+							(<%=  p.comments.size %>)
+						<% end %>
+						-<%= p.owner %>-
+						<br>
+						<% if p.content.length > 20 %>
+							<%= p.content.slice(0...20) %>
+						<%= link_to "...続きを読む", post_path(p.id) %>
+						<% else %>
+							<%= p.content %>
+						<% end %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
 
 </div>
 

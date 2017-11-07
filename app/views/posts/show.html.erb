@@ -4,6 +4,7 @@
 <p><%= @post.content %></p>
 
 <p><%= link_to "戻る", posts_path %></p>
+<%= link_to "編集", edit_post_path(@post.id)  %>
 
 <% if @post.comments.any? %>
 	<ul>
