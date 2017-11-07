@@ -1,11 +1,12 @@
 
-<h1>一覧表示</h1>
+<h1 style="text-align: center;">一覧表示</h1>
 
-<p><%= link_to "新規作成", new_post_path %></p>
-
+<p style="text-align: right;"><%= link_to "新規作成", new_post_path %></p>
+<hr>
 <div class="row">
 	<!-- 候補一覧 -->
 	<div class="col-sm-8">
+		<h4>Want to do things</h4>
 		<ul>
 			<% @posts.each do |p| %>
 				<% if p.schedule.nil? %>
@@ -30,6 +31,7 @@
 
 	<!-- 日程確定したやつ -->
 	<div class="col-sm-4" >
+		<h4>Next Plans</h4>
 		<ul>
 			<% @posts.each do |p| %>
 				<% if p.schedule.present? %>
