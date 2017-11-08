@@ -1,37 +1,59 @@
+<%= image_tag "wl_header.png" ,class: "wl_header" %>
 
-<h1 style="text-align: center;">一覧表示</h1>
-
-<p style="text-align: right;"><%= link_to "新規作成", new_post_path %></p>
 <hr>
+<p style="text-align: right;"><%= link_to "新規作成", new_post_path %></p>
+
 <div class="row">
 	<!-- 候補一覧 -->
 	<div class="col-sm-8">
-		<h4>Want to do things</h4>
-		<ul>
+		<h3 class="top_title" >Want to do things</h3>
+		
 			<% @posts.each do |p| %>
 				<% if p.schedule.nil? %>
-					<li>
-						<%= link_to post_path(p.id) do %>
-							<%= p.title %>
-							(<%=  p.comments.size %>)
-						<% end %>
-						-<%= p.owner %>-
-						<br>
-						<% if p.content.length > 20 %>
-							<%= p.content.slice(0...20) %>
-						<%= link_to "...続きを読む", post_path(p.id) %>
-						<% else %>
-							<%= p.content %>
-						<% end %>
-					</li>
+					<div class="row post">
+						<div class="faceicon">
+							<!-- ここをownerの値にに応じて表示内容を変える -->
+							<!-- いずれヘルパーで実装 -->
+							<%if p.owner.to_s == "やましょ" %>
+							<%= image_tag "yamaki_icon" %>
+							<% elsif p.owner.to_s == "だーひろ"%>
+							<%= image_tag "ono_icon" %>
+							<% elsif p.owner.to_s == "えってぃ"%>
+							<%= image_tag "suzue_icon" %>
+							<% end %>
+						</div>
+
+						<div class=" chatting">
+							<div class="says">
+							<div class="title_text">
+								<%= link_to post_path(p.id) do %>
+									<%= p.title %>
+									
+								<% end %>
+							</div>
+
+							<div class="content_text">
+								<% if p.content.length > 50 %>
+									<%= p.content.slice(0...50) %>
+								<%= link_to "...続きを読む", post_path(p.id) %>
+								<% else %>
+									<%= p.content %>
+								<% end %>
+							</div>
+							<div class="comment_count">
+								<span class="glyphicon glyphicon-comment"></span>コメント(<%=  p.comments.size %>)
+							</div>
+						</div>
+						</div>
+					</div>
 				<% end %>
-			<% end %>
-		</ul>
+			<% end %>		
 	</div>
+
 
 	<!-- 日程確定したやつ -->
 	<div class="col-sm-4" >
-		<h4>Next Plans</h4>
+		<h3 class="top_title">Next Plans</h3>
 		<ul>
 			<% @posts.each do |p| %>
 				<% if p.schedule.present? %>

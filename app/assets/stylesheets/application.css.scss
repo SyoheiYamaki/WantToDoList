@@ -17,3 +17,93 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
+
+header{
+	background-color: rgba(255,255,255,0.8);
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+	position: fixed;
+	z-index: 9999;
+	width: 100%
+	
+}
+
+header .logo{
+	margin-left: 60px;
+}
+
+.wl_header{
+	width: 100%;
+}
+
+.top_title{
+    padding: 0.5em 1em;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;	
+}
+
+/*以下、投稿コメント*/
+.post {
+    width: 100%;
+    margin: 30px 30px;
+    overflow: hidden;
+}
+
+.post .faceicon {
+    float: left;
+    margin-right: -20px;
+    width: 100px;
+}
+
+.post .faceicon img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.post .chatting {
+    width: 100%;
+    text-align: left;
+}
+.says {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 50px;
+    padding: 10px;
+    width: 500px;
+    height: 110px;
+    border-radius: 12px;
+    background: #edf1ee;
+}
+
+.says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -ms-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+.says p {
+    margin: 0;
+    padding: 0;
+}
+
+.content_text{
+	min-height: 40px;
+	font-size: 16px;
+	padding-left: 20px;
+}
+.title_text{
+	font-size: 20px;
+}
+
+.comment_count{
+	text-align: right;
+	margin-right: 20px;
+
+}
+
