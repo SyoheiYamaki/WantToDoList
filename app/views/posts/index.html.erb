@@ -1,12 +1,10 @@
-<%= image_tag "wl_header.png" ,class: "wl_header" %>
 
-<hr>
-<p style="text-align: right;"><%= link_to "新規作成", new_post_path %></p>
 
 <div class="row">
 	<!-- 候補一覧 -->
-	<div class="col-sm-8">
-		<h3 class="top_title" >Want to do things</h3>
+	<div class="col-sm-8 col-xs-8">
+		<main  id="main">
+		<h3 class="things_top_title" >Want to do things</h3>
 		
 			<% @posts.each do |p| %>
 				<% if p.schedule.nil? %>
@@ -47,34 +45,38 @@
 						</div>
 					</div>
 				<% end %>
-			<% end %>		
+			<% end %>
+		</main>
 	</div>
 
 
 	<!-- 日程確定したやつ -->
-	<div class="col-sm-4" >
-		<h3 class="top_title">Next Plans</h3>
-		<ul>
-			<% @posts.each do |p| %>
-				<% if p.schedule.present? %>
-					<li>
-						<%= link_to post_path(p.id) do %>
-							<%= p.title %>
-							(<%=  p.comments.size %>)
+	<div class="col-sm-4  col-xs-4" style="padding-top: 20px;">
+		<div id="pc-side-nav" class="sidebar">
+			<div class="title_box">
+				<p class="plans_top_title">Next Plans</p>
+				
+				<ul class="plans_list">
+					<% @posts.each do |p| %>
+						<% if p.schedule.present? %>
+							<li>
+								<p class="plan_date"><%= p.schedule %></p>
+								<p class="plan_title"><%= link_to p.title, post_path(p.id) %>
+							</li>
 						<% end %>
-						-<%= p.owner %>-
-						<br>
-						<% if p.content.length > 20 %>
-							<%= p.content.slice(0...20) %>
-						<%= link_to "...続きを読む", post_path(p.id) %>
-						<% else %>
-							<%= p.content %>
-						<% end %>
-					</li>
-				<% end %>
-			<% end %>
-		</ul>
+					<% end %>
+				</ul>
+			</div>
+		</div>
 	</div>
 
 </div>
+
+
+
+<!-- TOPに戻るための画像 -->
+<div id="back-to-top" style="position: fixed; right: 30px; bottom: 20px;" >
+	<a href="#"><%= image_tag "go_to_top.png" ,width:"100px", height:"100px"%></a>
+</div>
+
 

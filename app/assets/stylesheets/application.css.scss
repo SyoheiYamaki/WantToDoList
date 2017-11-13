@@ -18,10 +18,29 @@
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
+body{
+	/*background-image: url("background");*/
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.col-sm-4{
+	width: 380px;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.text-right{
+	text-align: right;
+}
+
+
 header{
-	background-color: rgba(255,255,255,0.8);
+	background-color: #d6ebff;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
-	position: fixed;
+	/*position: fixed;*/
 	z-index: 9999;
 	width: 100%
 	
@@ -31,16 +50,52 @@ header .logo{
 	margin-left: 60px;
 }
 
+.new_post{
+	float: right;
+	margin: 30px 40px 0 0;
+}
+
 .wl_header{
 	width: 100%;
 }
 
-.top_title{
+.things_top_title{
     padding: 0.5em 1em;
     color: #232323;
     background: #fff8e8;
     border-left: solid 10px #ffc06e;	
 }
+
+.plans_top_title{
+	background-color: #d6ebff;
+}
+
+.title_box{
+	border: solid 3px #d6ebff;
+
+}
+
+.plans_top_title{
+	font-size: 30px;
+	color: gray;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.plan_date{
+	margin-bottom: 0;
+	font-size: 17px;
+
+}
+
+.plan_title{
+	font-size: 15px;
+	margin-bottom: 0;
+}
+ 
+ .plans_list{
+ 	background-color: white;
+ }
 
 /*以下、投稿コメント*/
 .post {
@@ -105,5 +160,16 @@ header .logo{
 	text-align: right;
 	margin-right: 20px;
 
+}
+
+.yield{
+	margin-top: 30px;
+}
+
+.pc-side-nav-fixed {
+	margin-bottom: 20px;
+	top: 3%;
+	width: 350px;
+	position: fixed;
 }
 

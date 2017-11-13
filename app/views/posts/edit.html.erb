@@ -1,15 +1,44 @@
-<h2>編集</h2>
+<h2 class="text-center">編集</h2>
+<hr>
+
 
 <%= form_for @post, url: post_path(@post) do |f|  %>
-	<p><%= f.text_field :title %></p>
-	<p><%= f.text_area :content %></p>
-	<p><%= f.date_select :schedule %></p>
-  
 
-	<p><%= f.submit  %></p>
+	<div class="box24">
+		<p>タイトル</p>
+	</div>
+	<p class="form"><%= f.text_field :title ,placeholder: "(例)カラオケ",size:"50"%></p>
+	<% if @post.errors.messages[:title].any? %>
+		<%= @post.errors.messages[:title][0] %>
+	<% end %>
+
+	<div class="box24">
+		<p>内容</p>
+	</div>
+	<p class="form"><%= f.text_area :content, placeholder:"(例)最近大きな声で歌っていないので、みんなでカラオケに行きたいです。",size:"100x5" %></p>
+	<% if @post.errors.messages[:content].any? %>
+		<%= @post.errors.messages[:content][0] %>
+	<% end %>
+
+<div class="box24">
+<p>投稿者</p>
+</div>
+	<p class="form">
+		<label class="radio_button"><%= f.radio_button :owner ,"やましょ" %>やましょ</label>
+		<label class="radio_button"><%= f.radio_button :owner ,"だーひろ" %>だーひろ</label>
+		<label class="radio_button"><%= f.radio_button :owner ,"えってぃ" %>えってぃ</label>
+	</p>
+
+	<!-- セレクトボタンが選択されたら入力可能にする -->
+
+	<p>
+		<input type="radio" name="date" id="date_inputable" >
+		<%= f.date_select :schedule ,disabled: true,use_month_numbers: true, class: "date_select", id: "select_date" %></p>
+
+	<p class="text-center"><%= f.submit "編集", class: "btn btn-info submit" %></p>
+
 <% end %>
 
+<p class="text-right"><%= link_to "< 戻る", posts_path, data:{confirm: "作成中ですが、中止しても中止してもよろしいですか？"}  %></p>
 
-<%= link_to "削除" , post_path(@post.id ), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>
-<%= link_to "戻る", posts_path %>
-
+<%= link_to "こんな予定不採用ぅぅぅう！、！、と思ったらコチラ" , post_path(@post.id ), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>

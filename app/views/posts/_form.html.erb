@@ -1,6 +1,3 @@
-<h1 class="text-center">新規作成</h1>
-<hr>
-
 
 <%= form_for :post, url: posts_path do |f|  %>
 
@@ -29,10 +26,8 @@
 		<label class="radio_button"><%= f.radio_button :owner ,"えってぃ" %>えってぃ</label>
 	</p>
 
-	<p class="text-center"><%= f.submit "新規作成", class: "btn btn-info submit" %></p>
+	<p class="text-center"><%= f.submit "送信", class: "btn btn-info submit" %></p>
 
 <% end %>
 
 <p class="text-right"><%= link_to "< 戻る", posts_path, data:{confirm: "作成中ですが、中止しても中止してもよろしいですか？"}  %></p>
-
-

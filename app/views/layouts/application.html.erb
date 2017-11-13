@@ -5,17 +5,23 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
   </head>
 
   <body>
   	<header>
   		<!-- ここにヘッダーを記載する -->
       <%= link_to image_tag("wl_logo.png",{width: "180px", height: "100px;", class: "logo"}), posts_path %>
+      <p class="new_post"><%= link_to "新規作成", new_post_path , class:"btn btn-warning"%></p>
+    </div>
   	</header>
+
   	<div class="container">
+      <div class="yield">
     	<%= yield %>
+      </div>
 	</div>
+  
 	<footer>
 		<!-- ここにフッターを記載する -->
 	</footer>

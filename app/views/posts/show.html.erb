@@ -1,29 +1,43 @@
 
+
+<div class="row">
+
+<div class="col-sm-6">
 <h1><%= @post.title %></h1>
-<hr>
 <p><%= @post.content %></p>
 
 <p><%= link_to "戻る", posts_path %></p>
 <%= link_to "編集", edit_post_path(@post.id)  %>
 
-<% if @post.comments.any? %>
+
+
+</div>
+
+<div class="col-sm-6">
+
+<h3>--コメント--</h3>
+	<% if @post.comments.any? %>
 	<ul>
-		<% @post.comments.each do |c| %>
+		<% @post.comments.each do |comment| %>
 			<li>
-				<%= c.body %>
-				<%= link_to "削除" , post_comment_path(@post.id, c), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>
+				<%= comment.body %>
+				<%= link_to "削除" , post_comment_path(@post.id, comment), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>
 			</li>
 		<% end %>
 	</ul>
-<% end %>
+	<% end %>
 
-
-<h3>--コメント--</h3>
 <%= form_for ([@post, @post.comments.build]) do |f|  %>
-<p>
-	<%= f.text_field :body %>
-	
-</p>
-
-<p><%= f.submit %></p>
+	<p><%= f.text_field :body %></p>
+		<p>
+		<label ><%= f.radio_button :owner ,"やましょ" %>やましょ</label>
+		<label ><%= f.radio_button :owner ,"だーひろ" %>だーひろ</label>
+		<label ><%= f.radio_button :owner ,"えってぃ" %>えってぃ</label>
+	</p>
+	<p><%= f.submit %></p>
 <% end %>
+
+</div>
+
+
+</div>
