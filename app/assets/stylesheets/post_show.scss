@@ -9,3 +9,137 @@
     margin: 0; 
     padding: 0;
 }
+
+.comment_header{
+	width: 100%;
+	border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.post_content_show{
+	border: dotted lightblue;
+    border-radius: 10px;
+}
+
+.content_area{
+	height: 435px;
+}
+
+/*コメント全て*/
+.comments{
+	overflow: hidden;
+	padding: 20px 10px;
+	border: solid lightgray 0.5px;
+	overflow: overlay;
+	height: 300px; 
+}
+/*コメント一つずつ*/
+.comment{
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+
+/*オーナーのコメント*/
+.owner_comment {
+	text-align: left;
+	text-align: -webkit-left;
+}
+
+.owner_comment > p{
+	background-color: aquamarine;
+	padding: 8px 8px;
+    border-radius: 10px;		
+}
+
+/*以下オーナーのコメント、ネット引用*/
+.chatting {
+    width: 100%;
+    text-align: left;
+}
+.says_show {
+    display: inline-block;
+    position: relative; 
+    /*margin: 0 0 0 50px;*/
+    padding: 10px;
+    /*max-width: 250px;*/
+    
+    border-radius: 12px;
+    background: #edf1ee;
+    margin-left: 10px;
+}
+
+.says_show:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -ms-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+.says_show p {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/**/
+/*オーナー以外のコメント*/
+/**/
+.not_owner_comment {
+	/*text-align: right;
+	text-align: -webkit-right;*/
+
+}
+
+.not_owner_comment > p{
+	background-color: lightcyan;
+	padding: 8px 8px;
+    border-radius: 10px;	
+}
+
+.comment_icon{
+
+}
+/*オーナー以外のコメントネット引用*/
+.mycomment{
+	text-align: right;
+}
+.mycomment p{
+    display: inline-block;
+    position: relative; 
+    margin: 0 10px 0 0;
+    padding: 8px;
+    max-width: 250px;
+    border-radius: 12px;
+    background: lightcyan;
+    font-size: 15px;
+    text-align: left;
+}
+
+.mycomment p:after {
+    content: "";
+    position: absolute;
+    top: 3px; 
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid lightcyan;
+    -ms-transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+}
+
+
+/*コメントフォーム*/
+.comment_form{
+	background-image: url(comment_footer);
+	background-size: cover;
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 1px 3px 0.5;
+}

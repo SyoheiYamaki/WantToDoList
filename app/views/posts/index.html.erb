@@ -57,13 +57,17 @@
 				<p class="plans_top_title">Next Plans</p>
 				
 				<ul class="plans_list">
-					<% @posts.each do |p| %>
-						<% if p.schedule.present? %>
-							<li>
-								<p class="plan_date"><%= p.schedule %></p>
-								<p class="plan_title"><%= link_to p.title, post_path(p.id) %>
-							</li>
+					<% if @posts.any? %>
+						<% @posts.each do |p| %>
+							<% if p.schedule.present? %>
+								<li>
+									<p class="plan_date"><%= p.schedule %></p>
+									<p class="plan_title"><%= link_to p.title, post_path(p.id) %>
+								</li>
+							<% end %>
 						<% end %>
+					<% else %>
+						<p>予定はありません</p>
 					<% end %>
 				</ul>
 			</div>
@@ -76,7 +80,7 @@
 
 <!-- TOPに戻るための画像 -->
 <div id="back-to-top" style="position: fixed; right: 30px; bottom: 20px;" >
-	<a href="#"><%= image_tag "go_to_top.png" ,width:"100px", height:"100px"%></a>
+	<a href="#"><%= image_tag "go_to_top.png" ,width:"80px", height:"80px"%></a>
 </div>
 
 

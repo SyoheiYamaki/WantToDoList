@@ -1,41 +1,105 @@
-
+<p><%= link_to "戻る", posts_path %></p>
 
 <div class="row">
 
 <div class="col-sm-6">
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
+	<div class="post_content_show">
+<h1 style="padding-left: 20px" align="center"><%= link_to @post.title,edit_post_path(@post.id)  %></h1>
+<hr>
+<div class="content_area">
+<p style="padding: 10px 40px; white-space:pre-wrap; "><%= @post.content %></p>
+</div>
+</div>
 
-<p><%= link_to "戻る", posts_path %></p>
-<%= link_to "編集", edit_post_path(@post.id)  %>
+
+
 
 
 
 </div>
-
 <div class="col-sm-6">
 
-<h3>--コメント--</h3>
-	<% if @post.comments.any? %>
-	<ul>
-		<% @post.comments.each do |comment| %>
-			<li>
-				<%= comment.body %>
-				<%= link_to "削除" , post_comment_path(@post.id, comment), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>
-			</li>
-		<% end %>
-	</ul>
-	<% end %>
+		<%= image_tag "comment_header.png" ,class: "comment_header" %>
+	
+		
+		<div class="comments">
+			<!-- コメントがある時 -->
+			<% if @post.comments.any? %>
+				<% @post.comments.each do |comment| %>
+				<div class="comment">
+					<!-- もしコメンターがpost.ownerだったら -->
+					<% if comment.owner == @post.owner %>
+						
+						<div class="row">
+							<!-- 顔写真 -->
+							<div class="col-sm-3" align="right" style="padding-right: 0;">
+								<%if comment.owner == "やましょ"%>
+									<%= image_tag "yamaki_icon.png", width:"40px", height:"40px"  %>
+								<% elsif comment.owner == "だーひろ"%>
+									<%= image_tag "ono_icon.png", width:"40px", height:"40px"  %>
+								<% elsif comment.owner == "えってぃ"%>
+									<%= image_tag "suzue_icon.png", width:"40px", height:"40px"  %>
+								<% end %>					
+							</div>
+							<!-- コメント -->
+							<div class="col-sm-7 " style="padding-left: 0;">
+								<div class="says_show">
+									<p><%= comment.body %></p>
+			<!-- 						<%= link_to "削除" , post_comment_path(@post.id, comment), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %> -->
+								</div>
+							</div>
+							<!-- 空白 -->
+							<div class="col-sm-2"></div>
+						</div>
+					<!-- もしコメンターがpost.owner以外だったら -->
+					<% else %>
+						<!-- コメント -->
+						<div class="col-sm-2"></div>
+						<div class="col-sm-7" style="padding-right: 0;">
+							<div class="mycomment">
+									<p><%= comment.body %></p>
+							<!-- 		<%= link_to "削除" , post_comment_path(@post.id, comment), method: :delete, data:{confirm: "本当に削除してもよろしいですか？"} %>		 -->		
+							</div>
+						</div>
+						<!-- 顔写真 -->
+						<div class="col-sm-3" align="left" style="padding-left: 0;">
+							<%if comment.owner == "やましょ"%>
+								<%= image_tag "yamaki_icon.png", width:"40px", height:"40px"  %>
+							<% elsif comment.owner == "だーひろ"%>
+								<%= image_tag "ono_icon.png", width:"40px", height:"40px"  %>
+							<% elsif comment.owner == "えってぃ"%>
+								<%= image_tag "suzue_icon.png", width:"40px", height:"40px"  %>
+							<% end %>								
+						</div>				
+					<% end %>
+				</div>
+				<% end %>
+					<!-- コメントがないとき -->
+			<% else %>
+				<p>コメントはありません。</p>
+			<% end %>
+		</div>
 
-<%= form_for ([@post, @post.comments.build]) do |f|  %>
-	<p><%= f.text_field :body %></p>
+
+
+
+<div class="comment_form" align="cetner">
+	<%= form_for ([@post, @post.comments.build]) do |f|  %>
+	<div class="row">
+		<div style="padding: 10px 30px 0 90px;">
+		<%= f.text_area :body , placeholder:"(例)いいと思います。行きましょう。",size:"40x2"%>
 		<p>
-		<label ><%= f.radio_button :owner ,"やましょ" %>やましょ</label>
-		<label ><%= f.radio_button :owner ,"だーひろ" %>だーひろ</label>
-		<label ><%= f.radio_button :owner ,"えってぃ" %>えってぃ</label>
-	</p>
-	<p><%= f.submit %></p>
-<% end %>
+			<label ><%= f.radio_button :owner ,"やましょ" %>やましょ</label>
+			<label ><%= f.radio_button :owner ,"だーひろ" %>だーひろ</label>
+			<label ><%= f.radio_button :owner ,"えってぃ" %>えってぃ</label>
+		</p>
+	
+		
+			<p class="btn btn" align="center" style="display: content;"><%= f.submit "送信", class: "btn btn-warning", style:"width: 290px; "%></p>
+	</div>
+	</div>
+	<% end %>
+</div>
 
 </div>
 
